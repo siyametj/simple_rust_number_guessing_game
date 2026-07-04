@@ -13,6 +13,11 @@ pub fn take_integer(prompt: &str) -> i32 {
 
         // Take input
         match io::stdin().read_line(&mut input) {
+            Ok(0) => {
+                println!("Program interrupted by user! Goodbye");
+                std::process::exit(0);
+            }
+
             Ok(_) => {
                 if input.trim().is_empty() {
                     println!("Input can't be empty! Please try again");
@@ -47,6 +52,11 @@ pub fn take_string(prompt: &str) -> String {
         input.clear();
 
         match io::stdin().read_line(&mut input) {
+            Ok(0) => {
+                println!("Program interrupted by user! Goodbye");
+                std::process::exit(0);
+            }
+
             Ok(_) => {
                 if input.trim().is_empty() {
                     println!("Input can't be empty! Please try again");
